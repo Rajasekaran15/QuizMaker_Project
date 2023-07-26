@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <h2>Results</h2>
+  <div class="resultContainer">
+    <ng-container *ngFor="let section of dataSource; let row = index">
+      <div class="row1">
+        <p [ngStyle]="{'margin':'15px 0px'}">{{ section["question"] }}</p>
+      </div>
+      <div class="row2">
+        <ng-container *ngFor="let option of section['options']">
+           <ng-container *ngIf="option===section['selectedAnswer'] && option===section['correctAnswer']">
+                  <button mat-raised-button [ngStyle]="{'background-color':'green','margin':'10px 10px','color':'white'}">{{option}}</button>
+          </ng-container>
+          <ng-container *ngIf="option===section['selectedAnswer'] && option!=section['correctAnswer']">
+                  <button mat-raised-button [ngStyle]="{'background-color':'red','margin':'10px 10px','color':'white'}">{{option}}</button>
+          </ng-container>
+          <ng-container *ngIf="option!=section['correctAnswer'] && option!=section['selectedAnswer']">
+              <button mat-raised-button [ngStyle]="{'color':'green','margin':'10px 10px'}">{{option}}</button>
+          </ng-container>
+          <ng-container *ngIf="option!=section['selectedAnswer'] && option===section['correctAnswer']">
+                  <button mat-raised-button [ngStyle]="{'background-color':'green','margin':'10px 10px','color':'white'}">{{option}}</button>
+          </ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
+    <div class="bottomSection">
+      <p [ngStyle]="{'background-color': backgroundColor,'padding':'10px', 'margin':'18px 0px', 'color': 'white','width':'100%'}">You scored {{score}} out of 5</p>
+      <button mat-raised-button (click)="createQuiz()" [ngStyle]="{'background-color':'green','color':'white'}">Create a new quiz</button>
+    </div>
+  </div>
+</div>

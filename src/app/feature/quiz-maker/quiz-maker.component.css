@@ -1,0 +1,39 @@
+button{
+    cursor: pointer;
+    margin:5px 10px;
+}
+:ng-deep .optionButton:hover{
+    background-color: green !important;
+    color:white !important;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.questionContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left:10%;
+}
+.submitBtn{
+    text-align: center;
+}
+.btnToCreate{
+    position: relative;
+    height:55px;
+    bottom: 4px;
+}
+::ng-deep .btnToCreate:not(:disabled){
+    background-color: green !important;
+    color: white !important;
+}
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading, .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch, .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+    background-color: green;
+}

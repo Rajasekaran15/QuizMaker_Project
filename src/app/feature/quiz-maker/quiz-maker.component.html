@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Quiz Maker</h2>
+  <div class="row">
+    <app-drop-down
+      [name]="'categorySelect'"
+      [options]="categoryOptions"
+      (selectedValue)="categoryOption($event)"
+    >
+    </app-drop-down>
+    <app-drop-down
+      [name]="'difficultySelect'"
+      [options]="difficultyOptions"
+      (selectedValue)="difficultyOption($event)"
+    >
+    </app-drop-down>
+    <button mat-raised-button  type="submit" id="createBtn" class="btnToCreate" (click)="onClickCreate()" [disabled]="selectedCategoryOption==='undefined' || selectedDifficultyOption==='undefined'?true:false">Create</button>
+  </div>
+  <div class="row">
+    <ng-container *ngIf="isQuestionSection">
+      <div class="questionContainer">
+          <ng-container *ngFor="let section of dataSource; let row = index" >
+            <div class="questionRow">
+              <p [ngStyle]="{'margin':'15px 0px'}">{{ section["question"] }}</p>
+              <div>
+                  <ng-container *ngFor="let option of section['options'];let col=index">
+                    <button mat-raised-button (click)="saveAnswer(option, row, col)" [id]="'row'+row+'col'+col" class="optionButton" [ngStyle]="{'margin':'10px 10px','color':'black'}">{{ option }}</button>
+                  </ng-container>
+              </div>
+            </div>
+          </ng-container>
+          <div *ngIf="isEnabled" class="submitBtn">
+                <button mat-raised-button (click)="onSubmit()" [ngStyle]="{'background-color':'green','color':'white','margin':'20px'}">submit</button>
+          </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

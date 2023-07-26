@@ -1,0 +1,38 @@
+<!-- <div class="dropDown">
+    <select [name]="name" [id]="name" (change)="onClick($event)">
+        <ng-container *ngIf="name==='categorySelect'">
+            <option  value="undefined" >Select a category</option>
+            <ng-container *ngFor="let option of options">
+                <option [value]="option.id">{{option.value}}</option>
+            </ng-container>
+        </ng-container> 
+        <ng-container  *ngIf="name==='difficultySelect'">
+            <option value="undefined">Select a difficulty</option>
+            <ng-container *ngFor="let option of options">
+                <option [value]="option.value">{{option.value}}</option>
+            </ng-container>
+        </ng-container>
+    </select>
+</div> -->
+
+<mat-form-field appearance="outline" class="selectOption">
+  <mat-label>Select a category</mat-label>
+  <mat-select  [id]="name" [(ngModel)]="selectedOption" (selectionChange)="onClick()">
+    <ng-container *ngIf="name==='categorySelect'">
+        <mat-option  value="undefined">Select a category</mat-option>
+        <ng-container *ngFor="let option of options">
+        <mat-option [value]="option.id" >
+            {{option.value}}
+        </mat-option>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="name==='difficultySelect'">
+        <mat-option  value="undefined">Select a difficulty</mat-option>
+        <ng-container *ngFor="let option of options" >
+            <mat-option [value]="option.value" >
+                {{option.value}}
+            </mat-option>
+        </ng-container>
+    </ng-container>
+  </mat-select>
+</mat-form-field>
